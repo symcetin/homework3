@@ -24,10 +24,6 @@ Step 4. Verify that following message is displayed: “This page returned a 200 
 */
 @Test
 public void test9(){
-    driver.get(URL);
-    BrowserUtils.wait(3);
-    driver.findElement(By.linkText("Status Codes")).click();
-
     BrowserUtils.wait(2);
     driver.findElement(By.linkText("200")).click();
 
@@ -45,10 +41,6 @@ Step 4. Verify that following message is displayed: “This page returned a 301 
   */
 @Test
 public void test10(){
-    driver.get(URL);
-    BrowserUtils.wait(3);
-    driver.findElement(By.linkText("Status Codes")).click();
-
     BrowserUtils.wait(2);
     driver.findElement(By.linkText("301")).click();
 
@@ -66,10 +58,6 @@ Step 5. Verify that following message is displayed: “This page returned a 404 
 
     @Test
     public void test11(){
-        driver.get(URL);
-        BrowserUtils.wait(3);
-        driver.findElement(By.linkText("Status Codes")).click();
-
         BrowserUtils.wait(2);
         driver.findElement(By.linkText("404")).click();
 
@@ -86,10 +74,6 @@ Step 5. Verify that following message is displayed: “This page returned a 500 
 
     @Test
     public void test12(){
-        driver.get(URL);
-        BrowserUtils.wait(3);
-        driver.findElement(By.linkText("Status Codes")).click();
-
         BrowserUtils.wait(2);
         driver.findElement(By.linkText("500")).click();
 
@@ -101,6 +85,10 @@ Step 5. Verify that following message is displayed: “This page returned a 500 
     public void setup() {
         WebDriverManager.chromedriver().version("79").setup();
         driver = new ChromeDriver();
+        driver.get(URL);
+        BrowserUtils.wait(3);
+        driver.findElement(By.linkText("Status Codes")).click();
+
     }
 
     @AfterMethod
