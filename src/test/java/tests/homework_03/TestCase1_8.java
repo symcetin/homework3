@@ -1,4 +1,4 @@
-package tests.homework03;
+package tests.homework_03;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -221,7 +221,7 @@ Note: use element.sendKeys(“/file/path”) with specifying path to the file fo
         driver.findElement(By.linkText("File Upload")).click();
         BrowserUtils.wait(3);
 
-        driver.findElement(By.id("file-upload")).sendKeys("/Users/semih/IdeaProjects/Homework/target/surefire-reports/tests.TestCase.txt");
+        driver.findElement(By.id("file-upload")).sendKeys("/Users/semih/IdeaProjects/OnlineNewGitPractice2019/colors.txt");
         BrowserUtils.wait(3);
         driver.findElement(By.id("file-submit")).click();
 
