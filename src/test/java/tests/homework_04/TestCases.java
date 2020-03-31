@@ -253,27 +253,23 @@ public class TestCases {
         driver.get("https://amazon.com");
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("wooden spoon", Keys.ENTER);
 
-        BrowserUtils.wait(3);
+        List<WebElement> price = driver.findElements(By.xpath("//span[@class='a-price']/span[@class='a-offscreen']"));
 
-        List<WebElement> items = driver.findElements(By.xpath("//span[@class='a-price']/span[@class='a-offscreen']"));
-
-
-        Random random = new Random();
-        int x = random.nextInt(items.size());
-
-        x = x==0?1:x; // because results start from index 1
+        int x = new Random().nextInt(price.size());
+        x = x==0?1:x;
 
         String originName = driver.findElement(By.xpath("(//span[@class='a-size-base-plus a-color-base a-text-normal'])["+x+"]")).getText();
-        String wholePricePart = driver.findElement(By.xpath("(//span[@class='a-price']/span[2]/span[2])["+x+"]")).getText();
-        String fractionPricePart = driver.findElement(By.xpath("(//span[@class='a-price']/span[2]/span[3])["+x+"]")).getText();
-        String originPrice = "$" + wholePricePart + "." + fractionPricePart;
-        System.out.println(originPrice);
+
+        String originPrice = "$" +
+                driver.findElement(By.xpath("(//span[@class='a-price']/span[2]/span[2])["+x+"]")).getText() +"."+
+                driver.findElement(By.xpath("(//span[@class='a-price']/span[2]/span[3])["+x+"]")).getText();
 
         driver.findElement(By.xpath("(//span[@class='a-price-fraction'])["+x+"]")).click();
         Assert.assertEquals(driver.findElement(By.xpath("//span[text()='Qty:']/following-sibling::span")).getText(), "1");
         Assert.assertEquals(driver.findElement(By.id("productTitle")).getText(), originName);
-        Assert.assertEquals(driver.findElement(By.cssSelector("span[id='priceblock_ourprice']")).getText(), originPrice);
+        Assert.assertEquals(driver.findElement(By.id("price_inside_buybox")).getText(), originPrice);
         Assert.assertTrue(driver.findElement(By.id("add-to-cart-button")).isDisplayed());
+
     }
 
     /*
