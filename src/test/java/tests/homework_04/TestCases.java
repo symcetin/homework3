@@ -48,7 +48,7 @@ public class TestCases {
     @Test
     public void days() {
         driver.get("http://samples.gwtproject.org/samples/Showcase/Showcase.html#!CwCheckBox");
-        BrowserUtils.wait(4);
+        wait = new WebDriverWait(driver,20);
         List<WebElement> checkBoxes = driver.findElements(By.tagName("input")); //all checkboxes
 
         Random random = new Random(); // create random class' object
@@ -77,7 +77,7 @@ public class TestCases {
     @Test
     public void today_date(){
         driver.get("http://practice.cybertekschool.com/dropdown");
-        BrowserUtils.wait(3);
+        wait = new WebDriverWait(driver,20);
 
         String expectedDate = LocalDate.now().format(DateTimeFormatter.ofPattern("YYYY MMMM dd"));
 
@@ -198,7 +198,7 @@ public class TestCases {
 
         }
 
-       Assert.assertTrue(allGreen.containsAll(allBlue));
+       Assert.assertFalse(allGreen.containsAll(allBlue));
     }
 
     /*
@@ -251,6 +251,7 @@ public class TestCases {
     @Test
     public void amazon_cart(){
         driver.get("https://amazon.com");
+        wait = new WebDriverWait(driver,20);
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("wooden spoon", Keys.ENTER);
 
         List<WebElement> price = driver.findElements(By.xpath("//span[@class='a-price']/span[@class='a-offscreen']"));
@@ -286,6 +287,7 @@ public class TestCases {
     @Test
     public void amazon_prime() {
         driver.get("https://amazon.com");
+        wait = new WebDriverWait(driver,20);
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("wooden spoon", Keys.ENTER);
         // find first item name that has prime label
         WebElement firstPrimeName = driver.findElement(By.xpath("(//i[@aria-label='Amazon Prime']//..//..//..//..//..//..//h2)[1]"));
@@ -317,6 +319,7 @@ public class TestCases {
     @Test
     public void more_spoons(){
         driver.get("https://amazon.com");
+        wait = new WebDriverWait(driver,20);
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("wooden spoon", Keys.ENTER);
 
         List<WebElement> brandList_1 = driver.findElements(By.xpath("//div[@id='brandsRefinements']//li"));
@@ -339,6 +342,7 @@ public class TestCases {
     @Test
     public void cheap_spoons(){
         driver.get("https://amazon.com");
+        wait = new WebDriverWait(driver,20);
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("wooden spoon", Keys.ENTER);
         driver.findElement(By.linkText("Under $25")).click();
 
