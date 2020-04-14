@@ -57,6 +57,21 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>4.0.4</version>
+        </dependency>
+
+        <!-- This libraries gives the facility to read, write and manipulate different
+        Microsoft files such as excel sheet, power-point, and word files.-->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>4.1.2</version>
+        </dependency>
+
+
     </dependencies>
 
 
